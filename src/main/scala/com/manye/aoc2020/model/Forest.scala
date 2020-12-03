@@ -13,6 +13,10 @@ class Forest(val pattern: Array[Array[Char]]) {
     pattern(y)(validX(x, y))
   }
 
+  def get(position: Position): Char = {
+    get(position.x, position.y)
+  }
+
   def validX(x: Int, y: Int): Int = {
     if (x >= pattern(y).length) {
       return x % pattern(y).length
@@ -22,5 +26,9 @@ class Forest(val pattern: Array[Array[Char]]) {
 
   def isOut(x: Int, y: Int): Boolean = {
     x < 0 || y < 0 || y >= height
+  }
+
+  def isOut(position: Position): Boolean = {
+    isOut(position.x, position.y)
   }
 }

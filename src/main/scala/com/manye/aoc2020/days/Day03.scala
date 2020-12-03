@@ -1,6 +1,6 @@
 package com.manye.aoc2020.days
 
-import com.manye.aoc2020.model.Forest
+import com.manye.aoc2020.model.{Forest, Position}
 import com.manye.aoc2020.utils.InputUtils
 
 object Day03 {
@@ -27,16 +27,9 @@ object Day03 {
   }
 
   def calculateTreesInSlope(forest: Forest, slope: (Int, Int)): Int = {
-    var x, y = 0
-    var count = 0
-    while (!forest.isOut(x, y)) {
-      val square = forest.get(x, y)
-      if (square == Forest.TREE) {
-        count += 1
-      }
-      x += slope._1;
-      y += slope._2;
-    }
-    count
+    Stream
+      .iterate(Position(0, 0))(_.add(slope))
+      .takeWhile(!forest.isOut(_))
+      .count(forest.get(_) == Forest.TREE)
   }
 }
