@@ -77,9 +77,7 @@ object Passport {
   def parse(line: String): Passport = {
     val fields = line.split("\\s").map(field => {
       val passportField = field.split(":")
-      val value = passportField(1)
-      val name = passportField(0)
-      PassportField.create(name, value)
+      PassportField.create(passportField(0), passportField(1))
     }).toList
     Passport(fields)
   }
@@ -88,11 +86,7 @@ object Passport {
 case class Passport(fields: List[PassportField]) {
 
   def isValid: Boolean = {
-    if (hasRequiredFields) {
-      fields.forall(_.isValid)
-    } else {
-      false
-    }
+    hasRequiredFields && fields.forall(_.isValid)
   }
 
   def hasRequiredFields: Boolean = {
