@@ -18,8 +18,9 @@ class Forest(val pattern: Array[Array[Char]]) {
   }
 
   def validX(x: Int, y: Int): Int = {
-    if (x >= pattern(y).length) {
-      return x % pattern(y).length
+    val width = pattern(y).length
+    if (x >= width) {
+      return x % width
     }
     x
   }

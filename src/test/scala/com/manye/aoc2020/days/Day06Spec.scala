@@ -7,12 +7,12 @@ class Day06Spec extends AnyFunSuite {
 
   val groups: Groups = Day06.parseGroups("/test_input/day_06.txt")
 
-  test("countAllYes by groups") {
-    assert(Day06.countAllYes(groups.head) === 3)
-    assert(Day06.countAllYes(groups(1)) === 3)
-    assert(Day06.countAllYes(groups(2)) === 3)
-    assert(Day06.countAllYes(groups(3)) === 1)
-    assert(Day06.countAllYes(groups(4)) === 1)
+  test("countAllDistinctYes by groups") {
+    assert(Day06.countAllDistinctYes(groups.head) === 3)
+    assert(Day06.countAllDistinctYes(groups(1)) === 3)
+    assert(Day06.countAllDistinctYes(groups(2)) === 3)
+    assert(Day06.countAllDistinctYes(groups(3)) === 1)
+    assert(Day06.countAllDistinctYes(groups(4)) === 1)
   }
 
   test("Day06 part1 exercise") {

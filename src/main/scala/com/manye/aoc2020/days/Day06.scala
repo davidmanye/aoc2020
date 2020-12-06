@@ -20,7 +20,7 @@ object Day06 {
   def solvePart1(file: String): Int = {
     // Group[Person[Answer]]
     val groups: Groups = parseGroups(file)
-    sumCounts(groups, countAllYes)
+    sumCounts(groups, countAllDistinctYes)
   }
 
   def solvePart2(file: String): Int = {
@@ -35,7 +35,7 @@ object Day06 {
       .map(_.split("\\n").map(_.toCharArray.toSet))
   }
 
-  def countAllYes(persons: Persons): Int = {
+  def countAllDistinctYes(persons: Persons): Int = {
     persons.flatMap(_.toSet).toSet.size
   }
 
