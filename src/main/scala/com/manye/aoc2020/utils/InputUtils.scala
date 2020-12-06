@@ -25,13 +25,16 @@ object InputUtils {
       .map(_.toCharArray)
   }
 
-  def inputToPassportList(file: String): List[Passport] = {
-    val string = Source
+  def inputToListByBlankLines(file: String): Array[String] = {
+    Source
       .fromInputStream(inputStream(file))
       .mkString
-    string.split("\n\n")
+      .split("\n\n")
+  }
+
+  def inputToPassportList(file: String): List[Passport] = {
+    inputToListByBlankLines(file)
       .map(Passport.parse)
       .toList
   }
-
 }
