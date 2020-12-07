@@ -1,6 +1,6 @@
 package com.manye.aoc2020.utils
 
-import com.manye.aoc2020.model.Passport
+import com.manye.aoc2020.model.{BagRule, Passport}
 
 import java.io.InputStream
 import scala.io.Source
@@ -35,6 +35,12 @@ object InputUtils {
   def inputToPassportList(file: String): List[Passport] = {
     inputToListByBlankLines(file)
       .map(Passport.parse)
+      .toList
+  }
+
+  def inputToBagRuleList(file: String): List[BagRule] = {
+    inputToLines(file)
+      .map(BagRule.parse)
       .toList
   }
 }
